@@ -1,0 +1,4 @@
+/.idea
+/data/jo.db
+actions/__pycache__/
+utils/__pycache__/
