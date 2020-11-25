@@ -583,7 +583,7 @@
          </column>
          <column>
           <property name="text">
-           <string>age</string>
+           <string>ageSp</string>
           </property>
          </column>
         </widget>
