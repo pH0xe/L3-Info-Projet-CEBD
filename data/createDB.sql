@@ -58,8 +58,8 @@ CREATE TABLE LesResultats
   CONSTRAINT RES_CK1 CHECK (gold<>silver AND silver<>bronze AND gold<>bronze)
 );
 
-CREATE VIEW LesSportifs (numSp, nomSp, prenomSp, pays, dateNaisSp, categorieSp, age) AS
-    SELECT *, TRUNC(MONTHS_BETWEEN(SYSDATE,dateNaisSp)/12) AS age
+CREATE VIEW LesSportifs (numSp, nomSp, prenomSp, pays, dateNaisSp, categorieSp, ageSp) AS
+    SELECT *, TRUNC(MONTHS_BETWEEN(SYSDATE,dateNaisSp)/12) AS ageSp
     FROM LesSportifs_base;
 
 -- TODO 1.3a : ajouter la création de la table LesDisciplines et ajouter l'attribut discipline dans la table LesEpreuves
