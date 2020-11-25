@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Nom, Prénom, pays, catégorie des sportifs d'une équipe</string>
+   <string>Nom, Prénom, pays, catégorie, date de Naissance des sportifs d'une équipe</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -54,11 +54,11 @@
    </item>
    <item row="2" column="0">
     <widget class="QTableWidget" name="table_fct_comp_1">
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>50</number>
-     </attribute>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>110</number>
+     </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>50</number>
      </attribute>
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>true</bool>
@@ -84,6 +84,11 @@
      <column>
       <property name="text">
        <string>categorieSp</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>dateNaisSp</string>
       </property>
      </column>
     </widget>
