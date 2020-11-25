@@ -67,7 +67,7 @@ CREATE TABLE LesResultats
 );
 
 CREATE VIEW LesSportifs (numSp, nomSp, prenomSp, pays, dateNaisSp, categorieSp, ageSp) AS
-    SELECT *, TRUNC(MONTHS_BETWEEN(SYSDATE,dateNaisSp)/12) AS ageSp
+    SELECT *, CAST(STRFTIME('%Y.%m%d', 'now') - STRFTIME('%Y.%m%d', dateNaisSp) as int) AS ageSp
     FROM LesSportifs_base;
 
 
