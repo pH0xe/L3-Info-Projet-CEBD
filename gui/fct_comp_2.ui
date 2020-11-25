@@ -33,19 +33,26 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QRadioButton" name="radioFeminin">
        <property name="text">
-        <string>Saisissez une catégorie :</string>
+        <string>Féminin</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_fct_comp_2"/>
+      <widget class="QRadioButton" name="radioMasculin">
+       <property name="text">
+        <string>Masculin</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_fct_comp_2">
+      <widget class="QRadioButton" name="radioMixte">
        <property name="text">
-        <string>Valider</string>
+        <string>&amp;Mixte</string>
        </property>
       </widget>
      </item>
@@ -109,18 +116,50 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton_fct_comp_2</sender>
+   <sender>radioFeminin</sender>
    <signal>clicked()</signal>
    <receiver>fct_comp_2</receiver>
    <slot>refreshResult()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>351</x>
-     <y>51</y>
+     <x>80</x>
+     <y>46</y>
     </hint>
     <hint type="destinationlabel">
-     <x>444</x>
-     <y>134</y>
+     <x>343</x>
+     <y>31</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioMasculin</sender>
+   <signal>clicked()</signal>
+   <receiver>fct_comp_2</receiver>
+   <slot>refreshResult()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>287</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>474</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioMixte</sender>
+   <signal>clicked()</signal>
+   <receiver>fct_comp_2</receiver>
+   <slot>refreshResult()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>483</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>61</x>
+     <y>-12</y>
     </hint>
    </hints>
   </connection>
