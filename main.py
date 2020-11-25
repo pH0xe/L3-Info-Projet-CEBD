@@ -30,6 +30,7 @@ class AppWindow(QMainWindow):
     fct_comp_2_dialog = None
     fct_comp_3_dialog = None
     fct_comp_4_dialog = None
+    age_or_equipe_dialog = None
 
     # Constructeur
     def __init__(self):
@@ -159,6 +160,14 @@ class AppWindow(QMainWindow):
         self.fct_comp_4_dialog = AppFctComp4(self.data)
         self.fct_comp_4_dialog.show()
         self.changedValue.connect(self.fct_comp_4_dialog.refreshCatList)
+
+#todo finir
+    # En cas de clic sur la fonction 2.1
+    def open_age_or_equipe(self):
+        if self.age_or_equipe_dialog is not None:
+            self.age_or_equipe_dialog.close()
+        self.age_or_equipe_dialog = AppFctComp4(self.data)
+        self.age_or_equipe_dialog.show()
 
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
