@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
+    <width>713</width>
     <height>900</height>
    </rect>
   </property>
@@ -879,7 +879,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>710</width>
+     <width>713</width>
      <height>30</height>
     </rect>
    </property>
@@ -1092,6 +1092,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_11</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_classement_pays()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>543</x>
+     <y>740</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>448</x>
+     <y>740</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>createDB()</slot>
@@ -1107,5 +1123,6 @@
   <slot>open_fct_comp_3()</slot>
   <slot>open_fct_comp_4()</slot>
   <slot>open_age_or_equipe()</slot>
+  <slot>open_classement_pays()</slot>
  </slots>
 </ui>

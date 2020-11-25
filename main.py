@@ -1,5 +1,6 @@
 
 import sys, sqlite3
+
 from utils import db
 from utils import display
 from PyQt5.QtWidgets import QMainWindow, QApplication
@@ -13,6 +14,8 @@ from actions.action_fct_comp_2 import AppFctComp2
 from actions.action_fct_comp_3 import AppFctComp3
 from actions.action_fct_comp_4 import AppFctComp4
 from actions.action_age_or_equipe import AppOrEquipe
+from actions.action_classement_pays import AppClassementPays
+
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
 class AppWindow(QMainWindow):
@@ -32,6 +35,7 @@ class AppWindow(QMainWindow):
     fct_comp_3_dialog = None
     fct_comp_4_dialog = None
     age_or_equipe_dialog = None
+    classement_pays_dialog = None
 
     # Constructeur
     def __init__(self):
@@ -170,6 +174,13 @@ class AppWindow(QMainWindow):
         self.age_or_equipe_dialog = AppOrEquipe(self.data)
         self.age_or_equipe_dialog.show()
 
+    # En cas de clic sur la fonction 2.2
+    def open_classement_pays(self):
+        if self.classement_pays_dialog is not None:
+            self.classement_pays_dialog.close()
+        self.classement_pays_dialog = AppClassementPays(self.data)
+        self.classement_pays_dialog.show()
+
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
     ####################################################################################################################
@@ -197,6 +208,8 @@ class AppWindow(QMainWindow):
             self.fct_comp_4_dialog.close()
         if self.age_or_equipe_dialog is not None:
             self.age_or_equipe_dialog.close()
+        if self.classement_pays_dialog is not None:
+            self.classement_pays_dialog.close()
 
         # On ferme proprement la base de données
         self.data.close()
