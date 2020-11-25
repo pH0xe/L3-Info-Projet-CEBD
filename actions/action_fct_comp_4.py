@@ -18,7 +18,6 @@ class AppFctComp4(QDialog):
 
     # Fonction de mise à jour de l'affichage
     def refreshResult(self):
-        # TODO 1.7 : fonction à modifier pour que l'équipe ne propose que des valeurs possibles pour le pays choisi
         display.refreshLabel(self.ui.label_fct_comp_4, "")
         try:
             cursor = self.data.cursor()

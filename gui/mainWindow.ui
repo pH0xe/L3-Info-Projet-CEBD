@@ -299,7 +299,7 @@
       <x>12</x>
       <y>40</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -384,7 +384,7 @@
       <x>12</x>
       <y>80</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_13">
@@ -429,7 +429,7 @@
       <x>12</x>
       <y>180</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -474,7 +474,7 @@
       <x>12</x>
       <y>220</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -519,7 +519,7 @@
       <x>12</x>
       <y>304</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -564,7 +564,7 @@
       <x>12</x>
       <y>489</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -609,7 +609,7 @@
       <x>12</x>
       <y>530</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -654,7 +654,7 @@
       <x>12</x>
       <y>570</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -699,7 +699,7 @@
       <x>12</x>
       <y>650</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -744,7 +744,7 @@
       <x>12</x>
       <y>690</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -789,7 +789,7 @@
       <x>10</x>
       <y>760</y>
       <width>685</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -834,7 +834,7 @@
       <x>10</x>
       <y>800</y>
       <width>681</width>
-      <height>32</height>
+      <height>36</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -880,12 +880,12 @@
      <x>0</x>
      <y>0</y>
      <width>710</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFiles">
     <property name="title">
-     <string>Fichier</string>
+     <string>Fic&amp;hier</string>
     </property>
     <addaction name="actionQuitter"/>
    </widget>
@@ -894,7 +894,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionQuitter">
    <property name="text">
-    <string>Quitter</string>
+    <string>&amp;Quitter</string>
    </property>
   </action>
  </widget>
@@ -927,8 +927,8 @@
      <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>135</x>
-     <y>130</y>
+     <x>69</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -943,8 +943,8 @@
      <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>388</x>
-     <y>127</y>
+     <x>431</x>
+     <y>88</y>
     </hint>
    </hints>
   </connection>
@@ -959,8 +959,8 @@
      <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>598</x>
-     <y>139</y>
+     <x>638</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -971,12 +971,12 @@
    <slot>openData()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>469</x>
-     <y>156</y>
+     <x>474</x>
+     <y>144</y>
     </hint>
     <hint type="destinationlabel">
-     <x>498</x>
-     <y>183</y>
+     <x>500</x>
+     <y>130</y>
     </hint>
    </hints>
   </connection>
@@ -987,12 +987,12 @@
    <slot>open_fct_fournie_1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>385</x>
-     <y>263</y>
+     <x>532</x>
+     <y>244</y>
     </hint>
     <hint type="destinationlabel">
-     <x>79</x>
-     <y>174</y>
+     <x>561</x>
+     <y>231</y>
     </hint>
    </hints>
   </connection>
@@ -1003,12 +1003,12 @@
    <slot>open_fct_fournie_2()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>450</x>
-     <y>305</y>
+     <x>533</x>
+     <y>284</y>
     </hint>
     <hint type="destinationlabel">
-     <x>116</x>
-     <y>221</y>
+     <x>563</x>
+     <y>271</y>
     </hint>
    </hints>
   </connection>
@@ -1019,12 +1019,12 @@
    <slot>open_fct_comp_1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>448</x>
-     <y>386</y>
+     <x>559</x>
+     <y>368</y>
     </hint>
     <hint type="destinationlabel">
-     <x>515</x>
-     <y>274</y>
+     <x>579</x>
+     <y>353</y>
     </hint>
    </hints>
   </connection>
@@ -1035,12 +1035,12 @@
    <slot>open_fct_comp_2()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>488</x>
-     <y>428</y>
+     <x>578</x>
+     <y>520</y>
     </hint>
     <hint type="destinationlabel">
-     <x>576</x>
-     <y>305</y>
+     <x>593</x>
+     <y>533</y>
     </hint>
    </hints>
   </connection>
@@ -1051,12 +1051,12 @@
    <slot>open_fct_comp_3()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>489</x>
-     <y>470</y>
+     <x>583</x>
+     <y>561</y>
     </hint>
     <hint type="destinationlabel">
-     <x>551</x>
-     <y>342</y>
+     <x>592</x>
+     <y>574</y>
     </hint>
    </hints>
   </connection>
@@ -1067,12 +1067,28 @@
    <slot>open_fct_comp_4()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>534</x>
-     <y>512</y>
+     <x>495</x>
+     <y>601</y>
     </hint>
     <hint type="destinationlabel">
-     <x>521</x>
-     <y>367</y>
+     <x>564</x>
+     <y>631</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_10</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_age_or_equipe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>696</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>569</x>
+     <y>695</y>
     </hint>
    </hints>
   </connection>
@@ -1090,5 +1106,6 @@
   <slot>open_fct_comp_2()</slot>
   <slot>open_fct_comp_3()</slot>
   <slot>open_fct_comp_4()</slot>
+  <slot>open_age_or_equipe()</slot>
  </slots>
 </ui>
