@@ -44,4 +44,4 @@ class AppTablesData(QDialog):
         self.refreshTable(self.ui.label_resultats, self.ui.tableResultats, "SELECT numEp, gold, silver, bronze FROM LesResultats")
         self.refreshTable(self.ui.label_sportifs, self.ui.tableSportifs, "SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp) FROM LesSportifs_base")
         self.refreshTable(self.ui.label_vue_sportifs, self.ui.vueSportifs, "SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), ageSp FROM lesSportifs")
-        # TODO 1.4b : ajouter l'affichage des éléments de la vue LesEquipes après l'avoir créée
+        self.refreshTable(self.ui.label_vue_equipes, self.ui.vueEquipes,"SELECT numEq, nbEquipiersEq FROM LesEquipes")

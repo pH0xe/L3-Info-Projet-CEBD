@@ -70,5 +70,7 @@ CREATE VIEW LesSportifs (numSp, nomSp, prenomSp, pays, categorieSp, dateNaisSp, 
     SELECT *, CAST(STRFTIME('%Y.%m%d', 'now') - STRFTIME('%Y.%m%d', dateNaisSp) as int) AS ageSp
     FROM LesSportifs_base;
 
-
--- TODO 1.4a : ajouter la définition de la vue LesEquipes
+CREATE VIEW LesEquipes (numEq, nbEquipiersEq) AS
+    SELECT numEq, COUNT(numSp) AS nbEquipiersEq
+    FROM LesEquipiers
+    GROUP BY numEq;
