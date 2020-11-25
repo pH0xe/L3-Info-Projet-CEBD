@@ -36,7 +36,6 @@ class AppFctComp4(QDialog):
     # Fonction de mise à jour des catégories
     @pyqtSlot()
     def refreshCatList(self):
-
         try:
             cursor = self.data.cursor()
             result = cursor.execute("SELECT DISTINCT pays FROM LesSportifs_base ORDER BY pays")

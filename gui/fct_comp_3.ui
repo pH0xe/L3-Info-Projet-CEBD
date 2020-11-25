@@ -23,13 +23,16 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLineEdit" name="lineEdit_fct_comp_3"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Valider</string>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QComboBox" name="comboBox_fct_3_categorie">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>650</width>
+         <height>0</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -106,18 +109,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
+   <sender>comboBox_fct_3_categorie</sender>
+   <signal>currentTextChanged(QString)</signal>
    <receiver>fct_comp_3</receiver>
    <slot>refreshResult()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>364</x>
-     <y>52</y>
+     <x>410</x>
+     <y>18</y>
     </hint>
     <hint type="destinationlabel">
-     <x>444</x>
-     <y>81</y>
+     <x>355</x>
+     <y>-133</y>
     </hint>
    </hints>
   </connection>
