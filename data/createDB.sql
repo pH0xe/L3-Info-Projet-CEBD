@@ -66,7 +66,7 @@ CREATE TABLE LesResultats
   CONSTRAINT RES_CK1 CHECK (gold<>silver AND silver<>bronze AND gold<>bronze)
 );
 
-CREATE VIEW LesSportifs (numSp, nomSp, prenomSp, pays, dateNaisSp, categorieSp, ageSp) AS
+CREATE VIEW LesSportifs (numSp, nomSp, prenomSp, pays, categorieSp, dateNaisSp, ageSp) AS
     SELECT *, CAST(STRFTIME('%Y.%m%d', 'now') - STRFTIME('%Y.%m%d', dateNaisSp) as int) AS ageSp
     FROM LesSportifs_base;
 
