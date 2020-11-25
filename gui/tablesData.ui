@@ -29,8 +29,31 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>5</number>
+      <number>1</number>
      </property>
+     <widget class="QWidget" name="tabDisciplines">
+      <attribute name="title">
+       <string>lesDisciplines</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QTableWidget" name="tableDisciplines">
+         <column>
+          <property name="text">
+           <string>nomDi</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_disciplines">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tabEpreuves">
       <attribute name="title">
        <string>LesEpreuves</string>
@@ -66,7 +89,7 @@
           <bool>true</bool>
          </property>
          <property name="columnCount">
-          <number>6</number>
+          <number>7</number>
          </property>
          <attribute name="horizontalHeaderCascadingSectionResizes">
           <bool>true</bool>
@@ -112,6 +135,11 @@
          <column>
           <property name="text">
            <string>nbSportifsEp</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>nomDi</string>
           </property>
          </column>
          <column>
