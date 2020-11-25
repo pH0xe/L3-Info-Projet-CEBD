@@ -70,4 +70,5 @@ CREATE VIEW LesSportifs (numSp, nomSp, prenomSp, pays, dateNaisSp, categorieSp, 
     SELECT *, TRUNC(MONTHS_BETWEEN(SYSDATE,dateNaisSp)/12) AS ageSp
     FROM LesSportifs_base;
 
+
 -- TODO 1.4a : ajouter la définition de la vue LesEquipes
