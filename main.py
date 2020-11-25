@@ -12,6 +12,7 @@ from actions.action_fct_comp_1 import AppFctComp1
 from actions.action_fct_comp_2 import AppFctComp2
 from actions.action_fct_comp_3 import AppFctComp3
 from actions.action_fct_comp_4 import AppFctComp4
+from actions.action_age_or_equipe import AppOrEquipe
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
 class AppWindow(QMainWindow):
@@ -161,12 +162,12 @@ class AppWindow(QMainWindow):
         self.fct_comp_4_dialog.show()
         self.changedValue.connect(self.fct_comp_4_dialog.refreshCatList)
 
-#todo finir
+
     # En cas de clic sur la fonction 2.1
     def open_age_or_equipe(self):
         if self.age_or_equipe_dialog is not None:
             self.age_or_equipe_dialog.close()
-        self.age_or_equipe_dialog = AppFctComp4(self.data)
+        self.age_or_equipe_dialog = AppOrEquipe(self.data)
         self.age_or_equipe_dialog.show()
 
     ####################################################################################################################
@@ -180,20 +181,22 @@ class AppWindow(QMainWindow):
     def closeEvent(self, event):
 
         # On ferme les éventuelles fenêtres encore ouvertes
-        if (self.tablesDataDialog is not None):
+        if self.tablesDataDialog is not None:
             self.tablesDataDialog.close()
-        if (self.fct_fournie_1_dialog is not None):
+        if self.fct_fournie_1_dialog is not None:
             self.fct_fournie_1_dialog.close()
-        if (self.fct_fournie_2_dialog is not None):
+        if self.fct_fournie_2_dialog is not None:
             self.fct_fournie_2_dialog.close()
-        if (self.fct_comp_1_dialog is not None):
+        if self.fct_comp_1_dialog is not None:
             self.fct_comp_1_dialog.close()
-        if (self.fct_comp_2_dialog is not None):
+        if self.fct_comp_2_dialog is not None:
             self.fct_comp_2_dialog.close()
-        if (self.fct_comp_3_dialog is not None):
+        if self.fct_comp_3_dialog is not None:
             self.fct_comp_3_dialog.close()
-        if (self.fct_comp_4_dialog is not None):
+        if self.fct_comp_4_dialog is not None:
             self.fct_comp_4_dialog.close()
+        if self.age_or_equipe_dialog is not None:
+            self.age_or_equipe_dialog.close()
 
         # On ferme proprement la base de données
         self.data.close()
