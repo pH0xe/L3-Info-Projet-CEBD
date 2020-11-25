@@ -29,7 +29,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>7</number>
      </property>
      <widget class="QWidget" name="tabDisciplines">
       <attribute name="title">
@@ -620,6 +620,34 @@
         <widget class="QLabel" name="label_vue_sportifs">
          <property name="text">
           <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_vu_lesEquipes">
+      <attribute name="title">
+       <string>Vue LesEquipes</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_9">
+       <item>
+        <widget class="QTableWidget" name="vueEquipes">
+         <column>
+          <property name="text">
+           <string>numEq</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>nbEquipiersEq</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_vue_equipes">
+         <property name="text">
+          <string>TextLabel</string>
          </property>
         </widget>
        </item>
