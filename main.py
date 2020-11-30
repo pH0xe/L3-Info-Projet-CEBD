@@ -15,6 +15,7 @@ from actions.action_fct_comp_3 import AppFctComp3
 from actions.action_fct_comp_4 import AppFctComp4
 from actions.action_age_or_equipe import AppOrEquipe
 from actions.action_classement_pays import AppClassementPays
+from actions.action_inscription_epreuve import AppInscriptionEpreuve
 
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
@@ -36,6 +37,7 @@ class AppWindow(QMainWindow):
     fct_comp_4_dialog = None
     age_or_equipe_dialog = None
     classement_pays_dialog = None
+    insciption_epreuve_dialog = None
 
     # Constructeur
     def __init__(self):
@@ -181,6 +183,12 @@ class AppWindow(QMainWindow):
         self.classement_pays_dialog = AppClassementPays(self.data)
         self.classement_pays_dialog.show()
 
+    def open_inscription_epreuve(self):
+        if self.insciption_epreuve_dialog is not None:
+            self.insciption_epreuve_dialog.close()
+        self.insciption_epreuve_dialog = AppInscriptionEpreuve(self.data)
+        self.insciption_epreuve_dialog.show()
+
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
     ####################################################################################################################
@@ -210,6 +218,8 @@ class AppWindow(QMainWindow):
             self.age_or_equipe_dialog.close()
         if self.classement_pays_dialog is not None:
             self.classement_pays_dialog.close()
+        if self.insciption_epreuve_dialog is not None:
+            self.insciption_epreuve_dialog.close()
 
         # On ferme proprement la base de données
         self.data.close()

@@ -83,7 +83,7 @@
          <item>
           <widget class="QLabel" name="label_num_ep_ins_ep">
            <property name="text">
-            <string>Numéro de l'épreuve^</string>
+            <string>Numéro de l'épreuve</string>
            </property>
           </widget>
          </item>
@@ -98,6 +98,9 @@
       <widget class="QTableWidget" name="table_sp_ins_ep">
        <property name="enabled">
         <bool>true</bool>
+       </property>
+       <property name="showGrid">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -123,8 +126,110 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>combox_nom_ep_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshFormeEpreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>176</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combox_forme_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshCategorieEpreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>601</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>562</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combox_cat_ep_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshDateEpreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>34</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>91</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combox_date_ep_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshNumEpreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>338</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combox_num_ep_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshResult()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>623</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>579</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>validate_ins_ep</sender>
+   <signal>clicked()</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>register()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>468</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>124</x>
+     <y>470</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
   <slot>refreshResult()</slot>
+  <slot>refreshFormeEpreuve()</slot>
+  <slot>refreshCategorieEpreuve()</slot>
+  <slot>refreshDateEpreuve()</slot>
+  <slot>refreshNumEpreuve()</slot>
+  <slot>register()</slot>
  </slots>
 </ui>

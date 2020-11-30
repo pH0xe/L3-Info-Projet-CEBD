@@ -1108,6 +1108,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_13</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_inscription_epreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>429</x>
+     <y>806</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>499</x>
+     <y>802</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>createDB()</slot>
@@ -1124,5 +1140,6 @@
   <slot>open_fct_comp_4()</slot>
   <slot>open_age_or_equipe()</slot>
   <slot>open_classement_pays()</slot>
+  <slot>open_inscription_epreuve()</slot>
  </slots>
 </ui>
