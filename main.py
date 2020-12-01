@@ -15,7 +15,7 @@ from actions.action_fct_comp_3 import AppFctComp3
 from actions.action_fct_comp_4 import AppFctComp4
 from actions.action_age_or_equipe import AppOrEquipe
 from actions.action_classement_pays import AppClassementPays
-from actions.action_Update_Resultats_Equipes import UpdateResultatsEquipes
+from actions.action_Update_Resultats_Equipes import AppUpdateResultatsEquipes
 
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
@@ -186,7 +186,7 @@ class AppWindow(QMainWindow):
     def open_Update_Resultats_Equipes(self):
         if self.Update_Resultats_Equipes_dialog is not None:
             self.Update_Resultats_Equipes_dialog.close()
-        self.Update_Resultats_Equipes_dialog = UpdateResultatsEquipes(self.data)
+        self.Update_Resultats_Equipes_dialog = AppUpdateResultatsEquipes(self.data)
         self.Update_Resultats_Equipes_dialog.show()
 
 

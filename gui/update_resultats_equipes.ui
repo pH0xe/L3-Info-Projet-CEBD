@@ -1,33 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>fct_comp_4</class>
- <widget class="QDialog" name="fct_comp_4">
+ <class>Update_Resultats_Equipes</class>
+ <widget class="QDialog" name="Update_Resultats_Equipes">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>929</width>
-    <height>674</height>
+    <width>815</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Sportifs d'un pays et un équipe</string>
+   <string>Dialog</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Travail à réaliser : améliorez l'interface de sorte que le pays ne puisse être choisi que parmi ceux présents dans la base. Le comboBox équipe  ne doit proposer que des valeurs possibles pour le pays actuellement choisi.</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_noEp">
@@ -70,63 +57,21 @@
       <widget class="QComboBox" name="comboBox_3eme_place"/>
      </item>
      <item>
-      <widget class="QPushButton" name="Bouton_validation">
+      <widget class="QPushButton" name="Bouton_Validation">
        <property name="text">
-        <string>Valider</string>
+        <string>PushButton</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
-    <widget class="QTableWidget" name="table_fct_comp_4">
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>70</number>
-     </attribute>
-     <attribute name="horizontalHeaderMinimumSectionSize">
-      <number>50</number>
-     </attribute>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderVisible">
-      <bool>false</bool>
-     </attribute>
+   <item>
+    <widget class="QTableWidget" name="tableWidget">
      <column>
       <property name="text">
-       <string>numSp</string>
+       <string>nomEp</string>
       </property>
      </column>
-     <column>
-      <property name="text">
-       <string>nomSp</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>prenomSp</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>categorieSp</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>dateNaisSp</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_fct_comp_4">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
     </widget>
    </item>
   </layout>
@@ -134,88 +79,23 @@
  <resources/>
  <connections>
   <connection>
-   <sender>comboBox_1ere_place</sender>
-   <signal>currentTextChanged(QString)</signal>
-   <receiver>fct_comp_4</receiver>
-   <slot>refreshEquipeList()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>394</x>
-     <y>62</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>0</x>
-     <y>93</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>comboBox_2eme_place</sender>
-   <signal>currentTextChanged(QString)</signal>
-   <receiver>fct_comp_4</receiver>
-   <slot>refreshResult()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>599</x>
-     <y>62</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>650</x>
-     <y>0</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>comboBox_noEp</sender>
    <signal>currentTextChanged(QString)</signal>
-   <receiver>fct_comp_4</receiver>
+   <receiver>Update_Resultats_Equipes</receiver>
    <slot>refreshResult()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>164</x>
-     <y>52</y>
+     <x>149</x>
+     <y>14</y>
     </hint>
     <hint type="destinationlabel">
-     <x>176</x>
-     <y>-110</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>comboBox_3eme_place</sender>
-   <signal>currentTextChanged(QString)</signal>
-   <receiver>fct_comp_4</receiver>
-   <slot>refreshResult()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>754</x>
-     <y>54</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>771</x>
-     <y>-196</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Bouton_validation</sender>
-   <signal>clicked()</signal>
-   <receiver>fct_comp_4</receiver>
-   <slot>refreshResult()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>879</x>
-     <y>51</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>877</x>
-     <y>-28</y>
+     <x>85</x>
+     <y>6</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>refreshResult()</slot>
-  <slot>refreshEquipeList()</slot>
  </slots>
 </ui>

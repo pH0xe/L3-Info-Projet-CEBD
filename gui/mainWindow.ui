@@ -1115,12 +1115,12 @@
    <slot>open_Update_Resultats_Equipes()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>390</x>
-     <y>836</y>
+     <x>380</x>
+     <y>833</y>
     </hint>
     <hint type="destinationlabel">
-     <x>549</x>
-     <y>803</y>
+     <x>518</x>
+     <y>841</y>
     </hint>
    </hints>
   </connection>
