@@ -13,12 +13,47 @@ class AppInscriptionEpreuve(QDialog):
         self.ui = uic.loadUi("gui/inscription_epreuve.ui", self)
         self.data = data
         self.refreshNomEpreuve()
-        self.ui.table_sp_ins_ep.setColumnCount(2)
-        self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(['A', 'B'])
+        self.refreshResult()
 
     @pyqtSlot()
     def refreshResult(self):
-        display.refreshLabel(self.ui.label_inscription_epreuve, "refesh result TODO")
+        nom = self.ui.combox_nom_ep_ins_ep.currentText()
+        if nom == "None":
+            nom = None
+
+        forme = self.ui.combox_forme_ins_ep.currentText()
+        if forme == "None":
+            forme = None
+
+        categorie = self.ui.combox_cat_ep_ins_ep.currentText()
+        if categorie == "None":
+            categorie = None
+
+        date = self.ui.combox_date_ep_ins_ep.currentText()
+        if date == "None":
+            date = None
+
+        try:
+            if forme == "individuelle":
+                query = """
+                        SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                        FROM LesSportifs
+                        """
+            else:
+                query = """
+                        SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                        FROM LesEquipiers JOIN LesSportifs USING (numSp);
+                        """
+
+            cursor = self.data.cursor()
+            result = cursor.execute(query)
+        except Exception as e:
+            self.ui.table_sp_ins_ep.setRowCount(0)
+            display.refreshLabel(self.ui.label_inscription_epreuve, "Impossible d'afficher les résultats : " + repr(e))
+        else:
+            i = display.refreshGenericData(self.ui.table_sp_ins_ep, result)
+            if i == 0:
+                display.refreshLabel(self.ui.label_inscription_epreuve, "Aucun résultat")
 
     @pyqtSlot()
     def refreshNomEpreuve(self):
@@ -78,6 +113,7 @@ class AppInscriptionEpreuve(QDialog):
             self.ui.combox_cat_ep_ins_ep.clear()
         else:
             display.refreshGenericCombo(self.ui.combox_cat_ep_ins_ep, result)
+            self.adaptTableByType(forme)
 
     @pyqtSlot()
     def refreshDateEpreuve(self):
@@ -146,4 +182,17 @@ class AppInscriptionEpreuve(QDialog):
 
     @pyqtSlot()
     def register(self):
-        display.refreshLabel(self.ui.label_inscription_epreuve, "refesh result TODO")
+        select = self.ui.table_sp_ins_ep.selectionModel().selectedRows()
+        for row in sorted(select):
+            sportif = row.data()
+            print(sportif)
+
+
+
+    def adaptTableByType(self, typeEpreuve):
+        if typeEpreuve == "individuelle":
+            self.ui.table_sp_ins_ep.setColumnCount(7)
+            self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(['numSp', 'nomSp', 'prenomSp', 'pays', 'categorieSp', 'dateNaisSp', 'agesp'])
+        else:
+            self.ui.table_sp_ins_ep.setColumnCount(8)
+            self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(['numEq', 'numSp', 'nomSp', 'prenomSp', 'paysSp', 'categorieSp', 'dateNaisSp', 'agesp'])
