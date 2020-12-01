@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>701</width>
-    <height>517</height>
+    <width>1024</width>
+    <height>527</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -98,6 +98,12 @@
       <widget class="QTableWidget" name="table_sp_ins_ep">
        <property name="enabled">
         <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
        </property>
        <property name="showGrid">
         <bool>false</bool>

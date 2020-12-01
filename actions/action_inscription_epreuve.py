@@ -39,6 +39,17 @@ class AppInscriptionEpreuve(QDialog):
                         SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
                         FROM LesSportifs
                         """
+            elif forme == "par couple":
+                query = """
+                        WITH LesCouple AS (
+                            SELECT numEq
+                            FROM LesEquipiers
+                            GROUP BY numEq
+                            HAVING count(numSp) == 2
+                        )
+                        SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                        FROM LesEquipiers JOIN LesCouple USING (numEq) JOIN LesSportifs USING (numSp);
+                        """
             else:
                 query = """
                         SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
@@ -183,10 +194,17 @@ class AppInscriptionEpreuve(QDialog):
     @pyqtSlot()
     def register(self):
         select = self.ui.table_sp_ins_ep.selectionModel().selectedRows()
+        num = self.ui.combox_num_ep_ins_ep.currentText()
         for row in sorted(select):
-            sportif = row.data()
-            print(sportif)
-
+            try:
+                sportif = row.data()
+                query = """
+                INSERT INTO LesInscriptions(numIn, numEp) VALUES (?, ?);
+                """
+                cursor = self.data.cursor()
+                cursor.execute(query, [sportif, num])
+            except Exception as e:
+                print(e)
 
 
     def adaptTableByType(self, typeEpreuve):
