@@ -29,6 +29,7 @@ class AppOrEquipe(QDialog):
             GROUP BY numEq, numEp;
             """
 
+
             cursor = self.data.cursor()
             result = cursor.execute(query)
         except Exception as e:
