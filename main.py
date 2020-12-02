@@ -90,6 +90,25 @@ class AppWindow(QMainWindow):
             self.data.commit()
             # On émet le signal indiquant la modification de la table
             self.changedValue.emit()
+            self.createTrigger()
+
+    def createTrigger(self):
+        try:
+            # On exécute les requêtes du fichier d'insertion
+            db.updateDBfile(self.data, "data/createTrigger.sql")
+
+        except Exception as e:
+            # En cas d'erreur, on affiche un message
+            print(e)
+            display.refreshLabel(self.ui.label_2,
+                                 "L'erreur suivante s'est produite lors de la creation des triggers : " + repr(e) + ".")
+
+        else:
+            # Si tout s'est bien passé, on affiche le message de succès et on commit
+            display.refreshLabel(self.ui.label_2, "Trigger créé avec succès.")
+            self.data.commit()
+            # On émet le signal indiquant la modification de la table
+            self.changedValue.emit()
 
     # En cas de clic sur le bouton de suppression de la base
     def deleteDB(self):

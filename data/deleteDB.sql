@@ -1,3 +1,4 @@
+DROP TRIGGER IF EXISTS update_nb_participant;
 DROP VIEW IF EXISTS lesSportifs;
 DROP VIEW IF EXISTS LesEquipes;
 DROP TABLE IF EXISTS LesResultats;
