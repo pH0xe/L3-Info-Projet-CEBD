@@ -6,16 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>815</width>
-    <height>300</height>
+    <width>860</width>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Mise à jour des résultats</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QRadioButton" name="radioInsert">
+       <property name="text">
+        <string>Insérer</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioUpdate">
+       <property name="text">
+        <string>Mettre à jour</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="QLabel" name="label_noEp">
        <property name="text">
@@ -29,50 +50,76 @@
      <item>
       <widget class="QLabel" name="label_1ere_place">
        <property name="text">
-        <string>Equipe en 1ère place</string>
+        <string>1ère place</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_1ere_place"/>
+      <widget class="QComboBox" name="comboBox_1ere_place">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_2eme_place">
        <property name="text">
-        <string>Equipe en 2ème place</string>
+        <string>2ème place</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_2eme_place"/>
+      <widget class="QComboBox" name="comboBox_2eme_place">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_3eme_place">
        <property name="text">
-        <string>Equipe en 3ème place</string>
+        <string>3ème place</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_3eme_place"/>
+      <widget class="QComboBox" name="comboBox_3eme_place">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_Error">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="Bouton_Validation">
        <property name="text">
-        <string>PushButton</string>
+        <string>Valider</string>
        </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QTableWidget" name="tableWidget">
-     <column>
-      <property name="text">
-       <string>nomEp</string>
-      </property>
-     </column>
-    </widget>
    </item>
   </layout>
  </widget>
@@ -82,11 +129,11 @@
    <sender>comboBox_noEp</sender>
    <signal>currentTextChanged(QString)</signal>
    <receiver>Update_Resultats_Equipes</receiver>
-   <slot>refreshResult()</slot>
+   <slot>refreshEquipesList()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>149</x>
-     <y>14</y>
+     <x>65</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
      <x>85</x>
@@ -94,8 +141,92 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboBox_1ere_place</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>Update_Resultats_Equipes</receiver>
+   <slot>refresh2emeplaceList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>62</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>364</x>
+     <y>8</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_2eme_place</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>Update_Resultats_Equipes</receiver>
+   <slot>refresh3emeplaceList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>551</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Bouton_Validation</sender>
+   <signal>clicked()</signal>
+   <receiver>Update_Resultats_Equipes</receiver>
+   <slot>refreshResult()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>176</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>223</x>
+     <y>209</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioInsert</sender>
+   <signal>clicked()</signal>
+   <receiver>Update_Resultats_Equipes</receiver>
+   <slot>refreshEpreuvesList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>30</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>182</x>
+     <y>33</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioUpdate</sender>
+   <signal>clicked()</signal>
+   <receiver>Update_Resultats_Equipes</receiver>
+   <slot>refreshEpreuvesList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>479</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>512</x>
+     <y>33</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>refreshResult()</slot>
+  <slot>refreshEquipesList()</slot>
+  <slot>refresh2emeplaceList()</slot>
+  <slot>refresh3emeplaceList()</slot>
+  <slot>refreshEpreuvesList()</slot>
  </slots>
 </ui>
