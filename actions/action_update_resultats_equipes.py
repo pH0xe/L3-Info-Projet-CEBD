@@ -106,6 +106,3 @@ class AppUpdateResultatsEquipes(QDialog):
         self.refresh1ereplaceList()
         self.refresh2emeplaceList()
         self.refresh3emeplaceList()
-
-    def refresh2_3(self):
-        return 1
