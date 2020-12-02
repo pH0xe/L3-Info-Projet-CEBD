@@ -38,7 +38,13 @@ class AppInscriptionEpreuve(QDialog):
                 query = """
                         SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
                         FROM LesSportifs
+                        EXCEPT 
+                        SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                        FROM LesSportifs JOIN LesInscriptions ON (numIn = numSp)
+                        WHERE numEp = ?
                         """
+                cursor = self.data.cursor()
+                result = cursor.execute(query, [self.ui.combox_num_ep_ins_ep.currentText()])
             elif forme == "par couple":
                 query = """
                         WITH LesCouple AS (
@@ -48,16 +54,27 @@ class AppInscriptionEpreuve(QDialog):
                             HAVING count(numSp) == 2
                         )
                         SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
-                        FROM LesEquipiers JOIN LesCouple USING (numEq) JOIN LesSportifs USING (numSp);
+                        FROM LesEquipiers JOIN LesCouple USING (numEq) JOIN LesSportifs USING (numSp)
+                        EXCEPT 
+                        SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                        FROM LesEquipiers JOIN LesCouple USING (numEq) JOIN LesSportifs USING (numSp) JOIN LesInscriptions ON (numIn = numEq)
+                        WHERE numEp = ?;
                         """
+                cursor = self.data.cursor()
+                result = cursor.execute(query, [self.ui.combox_num_ep_ins_ep.currentText()])
             else:
                 query = """
                         SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
-                        FROM LesEquipiers JOIN LesSportifs USING (numSp);
+                        FROM LesEquipiers JOIN LesSportifs USING (numSp)
+                        EXCEPT 
+                        SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                        FROM LesEquipiers JOIN LesSportifs USING (numSp) JOIN LesInscriptions  ON (numIn = numEq)
+                        WHERE numEp = ?;
                         """
+                cursor = self.data.cursor()
+                result = cursor.execute(query, [self.ui.combox_num_ep_ins_ep.currentText()])
 
-            cursor = self.data.cursor()
-            result = cursor.execute(query)
+
         except Exception as e:
             self.ui.table_sp_ins_ep.setRowCount(0)
             display.refreshLabel(self.ui.label_inscription_epreuve, "Impossible d'afficher les résultats : " + repr(e))

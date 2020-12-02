@@ -95,7 +95,7 @@ class AppWindow(QMainWindow):
     def createTrigger(self):
         try:
             # On exécute les requêtes du fichier d'insertion
-            db.updateDBfile(self.data, "data/createTrigger.sql")
+            db.updateTriggerfile(self.data, "data/createTrigger.sql")
 
         except Exception as e:
             # En cas d'erreur, on affiche un message
