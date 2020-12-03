@@ -74,3 +74,8 @@ CREATE VIEW LesEquipes (numEq, nbEquipiersEq, pays, nomEquipier) AS
     SELECT numEq, COUNT(numSp) AS nbEquipiersEq, pays, group_concat(nomSp || ' ' || prenomSp)
     FROM LesEquipiers JOIN LesSportifs_base USING (numSp)
     GROUP BY numEq;
+
+CREATE VIEW LesEpreuvesView (numEp, nomEp, nombreInscrit, formeEp, categorieEp, nbSportifsEp, dateEp, nomDi) AS
+    SELECT numEp, nomEp, COUNT(numIn), formeEp, categorieEp, nbSportifsEp, dateEp, nomDi
+    FROM LesEpreuves JOIN LesInscriptions USING (numEp)
+    GROUP BY numEp, nomEp, formeEp, categorieEp, nbSportifsEp, dateEp, nomDi;

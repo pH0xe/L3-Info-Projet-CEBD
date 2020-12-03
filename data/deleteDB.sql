@@ -1,4 +1,5 @@
 DROP TRIGGER IF EXISTS check_nb_participant;
+DROP VIEW IF EXISTS LesEpreuvesView;
 DROP VIEW IF EXISTS lesSportifs;
 DROP VIEW IF EXISTS LesEquipes;
 DROP TABLE IF EXISTS LesResultats;
