@@ -45,3 +45,4 @@ class AppTablesData(QDialog):
         self.refreshTable(self.ui.label_sportifs, self.ui.tableSportifs, "SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp) FROM LesSportifs_base")
         self.refreshTable(self.ui.label_vue_sportifs, self.ui.vueSportifs, "SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), ageSp FROM lesSportifs")
         self.refreshTable(self.ui.label_vue_equipes, self.ui.vueEquipes,"SELECT numEq, nbEquipiersEq FROM LesEquipes")
+        self.refreshTable(self.ui.label_vue_epreuves, self.ui.vue_epreuves,"SELECT numEp, nomEp, nombreInscrit, formeEp, categorieEp, nbSportifsEp, date(dateEp), nomDi FROM LesEpreuvesView")

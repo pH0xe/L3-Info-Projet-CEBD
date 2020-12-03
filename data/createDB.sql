@@ -74,3 +74,8 @@ CREATE VIEW LesEquipes (numEq, nbEquipiersEq) AS
     SELECT numEq, COUNT(numSp) AS nbEquipiersEq
     FROM LesEquipiers
     GROUP BY numEq;
+
+CREATE VIEW LesEpreuvesView (numEp, nomEp, nombreInscrit, formeEp, categorieEp, nbSportifsEp, dateEp, nomDi) AS
+    SELECT numEp, nomEp, COUNT(numIn), formeEp, categorieEp, nbSportifsEp, dateEp, nomDi
+    FROM LesEpreuves JOIN LesInscriptions USING (numEp)
+    GROUP BY numEp, nomEp, formeEp, categorieEp, nbSportifsEp, dateEp, nomDi;

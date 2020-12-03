@@ -15,7 +15,7 @@ from actions.action_fct_comp_3 import AppFctComp3
 from actions.action_fct_comp_4 import AppFctComp4
 from actions.action_age_or_equipe import AppOrEquipe
 from actions.action_classement_pays import AppClassementPays
-from actions.action_Update_Resultats_Equipes import AppUpdateResultatsEquipes
+from actions.action_update_resultats_equipes import AppUpdateResultatsEquipes
 
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
@@ -168,7 +168,6 @@ class AppWindow(QMainWindow):
         self.fct_comp_4_dialog.show()
         self.changedValue.connect(self.fct_comp_4_dialog.refreshCatList)
 
-
     # En cas de clic sur la fonction 2.1
     def open_age_or_equipe(self):
         if self.age_or_equipe_dialog is not None:
@@ -188,7 +187,6 @@ class AppWindow(QMainWindow):
             self.Update_Resultats_Equipes_dialog.close()
         self.Update_Resultats_Equipes_dialog = AppUpdateResultatsEquipes(self.data)
         self.Update_Resultats_Equipes_dialog.show()
-
 
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
