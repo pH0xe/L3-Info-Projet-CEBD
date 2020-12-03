@@ -32,3 +32,14 @@ BEGIN
     end;
 end;
 /
+
+-- Verifier que l'on de l'inscription a une équipe le sportif fait bien partie du bon pays
+CREATE TRIGGER IF NOT EXISTS bon_pays_equipe
+    BEFORE INSERT ON LesEquipiers
+BEGIN
+    SELECT CASE
+        WHEN ((SELECT pays FROM LesSportifs_base WHERE numSp = NEW.numSp) = (SELECT pays FROM LesEquipes WHERE numEq = 1))
+        THEN RAISE(ABORT, 'Le nouveau membre ne fait pas partie du bon pays.')
+    END;
+end;
+/

@@ -77,7 +77,6 @@ class AppWindow(QMainWindow):
 
     # En cas de clic sur le bouton d'insertion de données
     def insertDB(self):
-
         try:
             # On exécute les requêtes du fichier d'insertion
             db.updateDBfile(self.data, "data/insertDB.sql")
@@ -92,7 +91,6 @@ class AppWindow(QMainWindow):
             self.data.commit()
             # On émet le signal indiquant la modification de la table
             self.changedValue.emit()
-            self.createTrigger()
 
     def createTrigger(self):
         try:
