@@ -14,7 +14,7 @@
    <string>Inscription à une épreuve</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+   <item row="2" column="0">
     <layout class="QVBoxLayout" name="verticalLayout_6">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -108,6 +108,12 @@
        <property name="showGrid">
         <bool>false</bool>
        </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
       </widget>
      </item>
      <item>
@@ -129,6 +135,27 @@
      </item>
     </layout>
    </item>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QRadioButton" name="radio_inscription">
+       <property name="text">
+        <string>Inscription</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radio_deinscription">
+       <property name="text">
+        <string>Désinscription</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <resources/>
@@ -140,8 +167,8 @@
    <slot>refreshFormeEpreuve()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>176</x>
-     <y>56</y>
+     <x>185</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>193</x>
@@ -156,8 +183,8 @@
    <slot>refreshCategorieEpreuve()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>601</x>
-     <y>52</y>
+     <x>1014</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>562</x>
@@ -172,8 +199,8 @@
    <slot>refreshDateEpreuve()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>34</x>
-     <y>112</y>
+     <x>43</x>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
      <x>91</x>
@@ -188,8 +215,8 @@
    <slot>refreshNumEpreuve()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>338</x>
-     <y>113</y>
+     <x>676</x>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
      <x>342</x>
@@ -204,8 +231,8 @@
    <slot>refreshResult()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>623</x>
-     <y>118</y>
+     <x>1014</x>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
      <x>579</x>
@@ -229,6 +256,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>radio_inscription</sender>
+   <signal>clicked()</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>changeObjectif()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>50</x>
+     <y>16</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>166</x>
+     <y>-16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radio_deinscription</sender>
+   <signal>clicked()</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>changeObjectif()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>583</x>
+     <y>12</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>779</x>
+     <y>-6</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>refreshResult()</slot>
@@ -237,5 +296,6 @@
   <slot>refreshDateEpreuve()</slot>
   <slot>refreshNumEpreuve()</slot>
   <slot>register()</slot>
+  <slot>changeObjectif()</slot>
  </slots>
 </ui>

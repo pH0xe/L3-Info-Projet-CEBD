@@ -41,6 +41,7 @@ class AppUpdateResultatsEquipes(QDialog):
         except Exception as e:
             display.refreshLabel(self.ui.label_Error, "Impossible d'afficher les résultats : " + repr(e))
         else:
+            self.data.commit()
             self.refreshEpreuvesList()
 
 

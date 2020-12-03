@@ -33,6 +33,10 @@ class AppInscriptionEpreuve(QDialog):
         if date == "None":
             date = None
 
+        num = self.ui.combox_num_ep_ins_ep.currentText()
+        if num == "None":
+            num = None
+
         try:
             if forme == "individuelle":
                 query = """
@@ -43,38 +47,27 @@ class AppInscriptionEpreuve(QDialog):
                         FROM LesSportifs JOIN LesInscriptions ON (numIn = numSp)
                         WHERE numEp = ?
                         """
-                cursor = self.data.cursor()
-                result = cursor.execute(query, [self.ui.combox_num_ep_ins_ep.currentText()])
             elif forme == "par couple":
                 query = """
-                        WITH LesCouple AS (
-                            SELECT numEq
-                            FROM LesEquipiers
-                            GROUP BY numEq
-                            HAVING count(numSp) == 2
-                        )
-                        SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
-                        FROM LesEquipiers JOIN LesCouple USING (numEq) JOIN LesSportifs USING (numSp)
+                        SELECT numEq, nbEquipiersEq, pays, nomEquipier 
+                        FROM LesEquipes
+                        WHERE nbEquipiersEq = 2
                         EXCEPT 
-                        SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
-                        FROM LesEquipiers JOIN LesCouple USING (numEq) JOIN LesSportifs USING (numSp) JOIN LesInscriptions ON (numIn = numEq)
+                        SELECT numEq, nbEquipiersEq, pays, nomEquipier
+                        FROM LesEquipes JOIN LesInscriptions  ON (numIn = numEq)
                         WHERE numEp = ?;
                         """
-                cursor = self.data.cursor()
-                result = cursor.execute(query, [self.ui.combox_num_ep_ins_ep.currentText()])
             else:
                 query = """
-                        SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
-                        FROM LesEquipiers JOIN LesSportifs USING (numSp)
+                        SELECT numEq, nbEquipiersEq, pays, nomEquipier 
+                        FROM LesEquipes
                         EXCEPT 
-                        SELECT numEq, numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
-                        FROM LesEquipiers JOIN LesSportifs USING (numSp) JOIN LesInscriptions  ON (numIn = numEq)
+                        SELECT numEq, nbEquipiersEq, pays, nomEquipier
+                        FROM LesEquipes JOIN LesInscriptions  ON (numIn = numEq)
                         WHERE numEp = ?;
                         """
-                cursor = self.data.cursor()
-                result = cursor.execute(query, [self.ui.combox_num_ep_ins_ep.currentText()])
-
-
+            cursor = self.data.cursor()
+            result = cursor.execute(query, [num])
         except Exception as e:
             self.ui.table_sp_ins_ep.setRowCount(0)
             display.refreshLabel(self.ui.label_inscription_epreuve, "Impossible d'afficher les résultats : " + repr(e))
@@ -210,18 +203,39 @@ class AppInscriptionEpreuve(QDialog):
 
     @pyqtSlot()
     def register(self):
-        select = self.ui.table_sp_ins_ep.selectionModel().selectedRows()
-        num = self.ui.combox_num_ep_ins_ep.currentText()
-        for row in sorted(select):
-            try:
-                sportif = row.data()
-                query = """
-                INSERT INTO LesInscriptions(numIn, numEp) VALUES (?, ?);
-                """
-                cursor = self.data.cursor()
-                cursor.execute(query, [sportif, num])
-            except Exception as e:
-                print(e)
+        if self.ui.radio_inscription.isChecked():
+            select = self.ui.table_sp_ins_ep.selectionModel().selectedRows()
+            num = self.ui.combox_num_ep_ins_ep.currentText()
+            for row in sorted(select):
+                try:
+                    sportif = row.data()
+                    query = """
+                            INSERT INTO LesInscriptions(numIn, numEp) VALUES (?, ?);
+                            """
+                    cursor = self.data.cursor()
+                    cursor.execute(query, [sportif, num])
+                except Exception as e:
+                    print(e)
+                else:
+                    self.refreshResult()
+                    self.data.commit()
+        else:
+            select = self.ui.table_sp_ins_ep.selectionModel().selectedRows()
+            num = self.ui.combox_num_ep_ins_ep.currentText()
+            for row in sorted(select):
+                try:
+                    sportif = row.data()
+                    query = """
+                            DELETE FROM LesInscriptions WHERE numIn = ? AND numEp = ?;
+                            """
+                    cursor = self.data.cursor()
+                    cursor.execute(query, [sportif, num])
+                except Exception as e:
+                    print(e)
+                else:
+                    self.refreshResult()
+                    self.data.commit()
+
 
 
     def adaptTableByType(self, typeEpreuve):
@@ -229,5 +243,14 @@ class AppInscriptionEpreuve(QDialog):
             self.ui.table_sp_ins_ep.setColumnCount(7)
             self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(['numSp', 'nomSp', 'prenomSp', 'pays', 'categorieSp', 'dateNaisSp', 'agesp'])
         else:
-            self.ui.table_sp_ins_ep.setColumnCount(8)
-            self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(['numEq', 'numSp', 'nomSp', 'prenomSp', 'paysSp', 'categorieSp', 'dateNaisSp', 'agesp'])
+            self.ui.table_sp_ins_ep.setColumnCount(4)
+            self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(['numEq', 'nbEquipiersEq', 'pays', 'nomEquipier'])
+
+    @pyqtSlot()
+    def changeObjectif(self):
+        if self.ui.radio_inscription.isChecked():
+            self.ui.validate_ins_ep.setText('Inscrire')
+        else:
+            self.ui.validate_ins_ep.setText('Désinscrire')
+
+
