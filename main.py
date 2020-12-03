@@ -77,7 +77,6 @@ class AppWindow(QMainWindow):
 
     # En cas de clic sur le bouton d'insertion de données
     def insertDB(self):
-
         try:
             # On exécute les requêtes du fichier d'insertion
             db.updateDBfile(self.data, "data/insertDB.sql")
@@ -92,7 +91,6 @@ class AppWindow(QMainWindow):
             self.data.commit()
             # On émet le signal indiquant la modification de la table
             self.changedValue.emit()
-            self.createTrigger()
 
     def createTrigger(self):
         try:
@@ -213,6 +211,7 @@ class AppWindow(QMainWindow):
             self.insciption_epreuve_dialog.close()
         self.insciption_epreuve_dialog = AppInscriptionEpreuve(self.data, self.changedValue)
         self.insciption_epreuve_dialog.show()
+        self.changedValue.connect(self.insciption_epreuve_dialog.refreshResult)
 
     def open_Update_Resultats_Equipes(self):
         if self.Update_Resultats_Equipes_dialog is not None:
