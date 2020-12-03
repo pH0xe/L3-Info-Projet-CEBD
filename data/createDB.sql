@@ -70,7 +70,7 @@ CREATE VIEW LesSportifs (numSp, nomSp, prenomSp, pays, categorieSp, dateNaisSp, 
     SELECT *, CAST(STRFTIME('%Y.%m%d', 'now') - STRFTIME('%Y.%m%d', dateNaisSp) as int) AS ageSp
     FROM LesSportifs_base;
 
-CREATE VIEW LesEquipes (numEq, nbEquipiersEq) AS
-    SELECT numEq, COUNT(numSp) AS nbEquipiersEq
-    FROM LesEquipiers
+CREATE VIEW LesEquipes (numEq, nbEquipiersEq, pays, nomEquipier) AS
+    SELECT numEq, COUNT(numSp) AS nbEquipiersEq, pays, group_concat(nomSp || ' ' || prenomSp)
+    FROM LesEquipiers JOIN LesSportifs_base USING (numSp)
     GROUP BY numEq;
