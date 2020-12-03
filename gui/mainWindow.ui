@@ -1104,7 +1104,23 @@
     </hint>
     <hint type="destinationlabel">
      <x>448</x>
-     <y>740</y>
+     <y>725</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_14</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_Update_Resultats_Equipes()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>380</x>
+     <y>833</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>518</x>
+     <y>841</y>
     </hint>
    </hints>
   </connection>
@@ -1140,6 +1156,7 @@
   <slot>open_fct_comp_4()</slot>
   <slot>open_age_or_equipe()</slot>
   <slot>open_classement_pays()</slot>
+  <slot>open_Update_Resultats_Equipes()</slot>
   <slot>open_inscription_epreuve()</slot>
  </slots>
 </ui>
