@@ -1,5 +1,6 @@
 DROP TRIGGER IF EXISTS check_nb_participant;
 DROP TRIGGER IF EXISTS au_moins_3_inscrits;
+DROP TRIGGER IF EXISTS au_moins_3_inscrits_delete;
 DROP VIEW IF EXISTS LesEpreuvesView;
 DROP VIEW IF EXISTS lesSportifs;
 DROP VIEW IF EXISTS LesEquipes;

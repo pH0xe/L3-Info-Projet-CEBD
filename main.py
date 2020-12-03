@@ -213,6 +213,7 @@ class AppWindow(QMainWindow):
             self.insciption_epreuve_dialog.close()
         self.insciption_epreuve_dialog = AppInscriptionEpreuve(self.data, self.changedValue)
         self.insciption_epreuve_dialog.show()
+        self.changedValue.connect(self.insciption_epreuve_dialog.refreshResult)
 
     def open_Update_Resultats_Equipes(self):
         if self.Update_Resultats_Equipes_dialog is not None:

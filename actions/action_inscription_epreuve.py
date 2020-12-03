@@ -237,9 +237,9 @@ class AppInscriptionEpreuve(QDialog):
                     cursor = self.data.cursor()
                     cursor.execute(query, [sportif, num])
                 except Exception as e:
-                    self.ui.logList.addItem('/!\\  Erreur lors de l\'insert de : ' + str(sportif) + ' ' + str(num) + ' - ' + repr(e))
+                    self.ui.logList.addItem('/!\\  Erreur lors de l\'insert de : ' + str(sportif) + ' à l\'épreuve : ' + str(num) + ' - ' + repr(e))
                 else:
-                    self.ui.logList.addItem('     Insert de : ' + str(sportif) + ' a l\'epreuve : ' + str(num) + ' correctement effectué')
+                    self.ui.logList.addItem('     Insert de : ' + str(sportif) + ' à l\'epreuve : ' + str(num) + ' correctement effectué')
                     self.refreshResult()
                     self.data.commit()
                     self.changedValue.emit()
@@ -255,9 +255,9 @@ class AppInscriptionEpreuve(QDialog):
                     cursor = self.data.cursor()
                     cursor.execute(query, [sportif, num])
                 except Exception as e:
-                    self.ui.logList.addItem('/!\\  Erreur lors du delete de : ' + str(sportif) + ' ' + str(num) + ' - ' + repr(e))
+                    self.ui.logList.addItem('/!\\  Erreur lors du delete de : ' + str(sportif) + ' à l\'épreuve : ' + str(num) + ' - ' + repr(e))
                 else:
-                    self.ui.logList.addItem('     Delete de : ' + str(sportif) + ' a l\'épreuve : ' + str(num) + ' correctement effectué')
+                    self.ui.logList.addItem('     Delete de : ' + str(sportif) + ' à l\'épreuve : ' + str(num) + ' correctement effectué')
                     self.refreshResult()
                     self.data.commit()
                     self.changedValue.emit()
