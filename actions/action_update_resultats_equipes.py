@@ -41,7 +41,7 @@ class AppUpdateResultatsEquipes(QDialog):
         except Exception as e:
             display.refreshLabel(self.ui.label_Error, "Impossible de modifier les resultats : " + repr(e))
         else:
-            display.refreshLabel(self.ui.label_Error, "Resulstat de l'épreuve n°" + self.ui.comboBox_noEp.currentText() + " effectué.")
+            display.refreshLabel(self.ui.label_Error, "Modification des resultat de l'épreuve n°" + self.ui.comboBox_noEp.currentText() + " effectué.")
             self.changedValue.emit()
             self.data.commit()
             self.refreshEpreuvesList()

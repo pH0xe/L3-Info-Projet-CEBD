@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>527</height>
+    <height>731</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,19 +117,16 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="validate_ins_ep">
-       <property name="text">
-        <string>Inscrire</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QLabel" name="label_inscription_epreuve">
        <property name="text">
         <string/>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="validate_ins_ep">
+       <property name="text">
+        <string>Inscrire</string>
        </property>
       </widget>
      </item>
@@ -155,6 +152,23 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="4" column="0">
+    <widget class="QListWidget" name="logList">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Log</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

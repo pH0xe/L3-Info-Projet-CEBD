@@ -8,10 +8,12 @@ from PyQt5 import uic
 class AppInscriptionEpreuve(QDialog):
 
     # Constructeur
-    def __init__(self, data: sqlite3.Connection):
+    def __init__(self, data: sqlite3.Connection, changedValue):
         super(QDialog, self).__init__()
         self.ui = uic.loadUi("gui/inscription_epreuve.ui", self)
         self.data = data
+        self.changedValue = changedValue
+        self.registerChecked = self.ui.radio_inscription.isChecked()
         self.refreshNomEpreuve()
         self.refreshResult()
 
@@ -38,34 +40,54 @@ class AppInscriptionEpreuve(QDialog):
             num = None
 
         try:
-            if forme == "individuelle":
-                query = """
-                        SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
-                        FROM LesSportifs
-                        EXCEPT 
-                        SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
-                        FROM LesSportifs JOIN LesInscriptions ON (numIn = numSp)
-                        WHERE numEp = ?
-                        """
-            elif forme == "par couple":
-                query = """
-                        SELECT numEq, nbEquipiersEq, pays, nomEquipier 
-                        FROM LesEquipes
-                        WHERE nbEquipiersEq = 2
-                        EXCEPT 
-                        SELECT numEq, nbEquipiersEq, pays, nomEquipier
-                        FROM LesEquipes JOIN LesInscriptions  ON (numIn = numEq)
-                        WHERE numEp = ?;
-                        """
+            if self.registerChecked:
+                if forme == "individuelle":
+                    query = """
+                            SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                            FROM LesSportifs
+                            EXCEPT 
+                            SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                            FROM LesSportifs JOIN LesInscriptions ON (numIn = numSp)
+                            WHERE numEp = ?
+                            """
+                elif forme == "par couple":
+                    query = """
+                            SELECT numEq, nbEquipiersEq, pays, nomEquipier 
+                            FROM LesEquipes
+                            WHERE nbEquipiersEq = 2
+                            EXCEPT 
+                            SELECT numEq, nbEquipiersEq, pays, nomEquipier
+                            FROM LesEquipes JOIN LesInscriptions  ON (numIn = numEq)
+                            WHERE numEp = ?;
+                            """
+                else:
+                    query = """
+                            SELECT numEq, nbEquipiersEq, pays, nomEquipier 
+                            FROM LesEquipes
+                            EXCEPT 
+                            SELECT numEq, nbEquipiersEq, pays, nomEquipier
+                            FROM LesEquipes JOIN LesInscriptions  ON (numIn = numEq)
+                            WHERE numEp = ?;
+                            """
             else:
-                query = """
-                        SELECT numEq, nbEquipiersEq, pays, nomEquipier 
-                        FROM LesEquipes
-                        EXCEPT 
-                        SELECT numEq, nbEquipiersEq, pays, nomEquipier
-                        FROM LesEquipes JOIN LesInscriptions  ON (numIn = numEq)
-                        WHERE numEp = ?;
-                        """
+                if forme == "individuelle":
+                    query = """
+                            SELECT numSp, nomSp, prenomSp, pays, categorieSp, date(dateNaisSp), agesp
+                            FROM LesSportifs JOIN LesInscriptions ON (numIn = numSp)
+                            WHERE numEp = ?
+                            """
+                elif forme == "par couple":
+                    query = """
+                            SELECT numEq, nbEquipiersEq, pays, nomEquipier
+                            FROM LesEquipes JOIN LesInscriptions  ON (numIn = numEq)
+                            WHERE numEp = ? AND nbEquipiersEq = 2;
+                            """
+                else:
+                    query = """
+                            SELECT numEq, nbEquipiersEq, pays, nomEquipier
+                            FROM LesEquipes JOIN LesInscriptions  ON (numIn = numEq)
+                            WHERE numEp = ?;
+                            """
             cursor = self.data.cursor()
             result = cursor.execute(query, [num])
         except Exception as e:
@@ -203,45 +225,48 @@ class AppInscriptionEpreuve(QDialog):
 
     @pyqtSlot()
     def register(self):
-        if self.ui.radio_inscription.isChecked():
+        if self.registerChecked:
             select = self.ui.table_sp_ins_ep.selectionModel().selectedRows()
             num = self.ui.combox_num_ep_ins_ep.currentText()
             for row in sorted(select):
+                sportif = row.data()
                 try:
-                    sportif = row.data()
                     query = """
                             INSERT INTO LesInscriptions(numIn, numEp) VALUES (?, ?);
                             """
                     cursor = self.data.cursor()
                     cursor.execute(query, [sportif, num])
                 except Exception as e:
-                    print(e)
+                    self.ui.logList.addItem('/!\\  Erreur lors de l\'insert de : ' + str(sportif) + ' ' + str(num) + ' - ' + repr(e))
                 else:
+                    self.ui.logList.addItem('     Insert de : ' + str(sportif) + ' a l\'epreuve : ' + str(num) + ' correctement effectué')
                     self.refreshResult()
                     self.data.commit()
+                    self.changedValue.emit()
         else:
             select = self.ui.table_sp_ins_ep.selectionModel().selectedRows()
             num = self.ui.combox_num_ep_ins_ep.currentText()
             for row in sorted(select):
+                sportif = row.data()
                 try:
-                    sportif = row.data()
                     query = """
                             DELETE FROM LesInscriptions WHERE numIn = ? AND numEp = ?;
                             """
                     cursor = self.data.cursor()
                     cursor.execute(query, [sportif, num])
                 except Exception as e:
-                    print(e)
+                    self.ui.logList.addItem('/!\\  Erreur lors du delete de : ' + str(sportif) + ' ' + str(num) + ' - ' + repr(e))
                 else:
+                    self.ui.logList.addItem('     Delete de : ' + str(sportif) + ' a l\'épreuve : ' + str(num) + ' correctement effectué')
                     self.refreshResult()
                     self.data.commit()
-
-
+                    self.changedValue.emit()
 
     def adaptTableByType(self, typeEpreuve):
         if typeEpreuve == "individuelle":
             self.ui.table_sp_ins_ep.setColumnCount(7)
-            self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(['numSp', 'nomSp', 'prenomSp', 'pays', 'categorieSp', 'dateNaisSp', 'agesp'])
+            self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(
+                ['numSp', 'nomSp', 'prenomSp', 'pays', 'categorieSp', 'dateNaisSp', 'agesp'])
         else:
             self.ui.table_sp_ins_ep.setColumnCount(4)
             self.ui.table_sp_ins_ep.setHorizontalHeaderLabels(['numEq', 'nbEquipiersEq', 'pays', 'nomEquipier'])
@@ -252,5 +277,5 @@ class AppInscriptionEpreuve(QDialog):
             self.ui.validate_ins_ep.setText('Inscrire')
         else:
             self.ui.validate_ins_ep.setText('Désinscrire')
-
-
+        self.registerChecked = self.ui.radio_inscription.isChecked()
+        self.refreshResult()
