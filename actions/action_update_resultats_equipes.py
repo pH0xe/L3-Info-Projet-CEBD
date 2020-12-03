@@ -2,18 +2,18 @@
 import sqlite3
 from utils import display
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from PyQt5 import uic
 
 
 class AppUpdateResultatsEquipes(QDialog):
-
     # Constructeur
-    def __init__(self, data:sqlite3.Connection):
+    def __init__(self, data:sqlite3.Connection, changedValue):
         super(QDialog, self).__init__()
         self.ui = uic.loadUi("gui/update_resultats_equipes.ui", self)
         self.data = data
         self.refreshEpreuvesList()
+        self.changedValue = changedValue
 
 
     # Fonction de mise à jour de l'affichage
@@ -39,8 +39,10 @@ class AppUpdateResultatsEquipes(QDialog):
                                 self.ui.comboBox_3eme_place.currentText(),
                                 self.ui.comboBox_noEp.currentText()])
         except Exception as e:
-            display.refreshLabel(self.ui.label_Error, "Impossible d'afficher les résultats : " + repr(e))
+            display.refreshLabel(self.ui.label_Error, "Impossible d'afficher de modifier les resultats : " + repr(e))
         else:
+            display.refreshLabel(self.ui.label_Error, "Resulstat de l'épreuve n°" + self.ui.comboBox_noEp.currentText() + " effectué.")
+            self.changedValue.emit()
             self.refreshEpreuvesList()
 
 

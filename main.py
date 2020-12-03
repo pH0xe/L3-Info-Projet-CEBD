@@ -137,6 +137,7 @@ class AppWindow(QMainWindow):
             self.fct_fournie_2_dialog.close()
         self.fct_fournie_2_dialog = AppFctFournie2(self.data)
         self.fct_fournie_2_dialog.show()
+        self.changedValue.connect(self.fct_fournie_2_dialog.refreshResult)
 
     # En cas de clic sur la fonction à compléter 1
     def open_fct_comp_1(self):
@@ -152,6 +153,7 @@ class AppWindow(QMainWindow):
             self.fct_comp_2_dialog.close()
         self.fct_comp_2_dialog = AppFctComp2(self.data)
         self.fct_comp_2_dialog.show()
+        self.changedValue.connect(self.fct_comp_2_dialog.refreshResult)
 
     # En cas de clic sur la fonction à compléter 3
     def open_fct_comp_3(self):
@@ -159,6 +161,7 @@ class AppWindow(QMainWindow):
             self.fct_comp_3_dialog.close()
         self.fct_comp_3_dialog = AppFctComp3(self.data)
         self.fct_comp_3_dialog.show()
+        self.changedValue.connect(self.fct_comp_3_dialog.refreshResult)
 
     # En cas de clic sur la fonction à compléter 4
     def open_fct_comp_4(self):
@@ -174,6 +177,8 @@ class AppWindow(QMainWindow):
             self.age_or_equipe_dialog.close()
         self.age_or_equipe_dialog = AppOrEquipe(self.data)
         self.age_or_equipe_dialog.show()
+        self.changedValue.connect(self.age_or_equipe_dialog.refreshResult)
+
 
     # En cas de clic sur la fonction 2.2
     def open_classement_pays(self):
@@ -181,12 +186,14 @@ class AppWindow(QMainWindow):
             self.classement_pays_dialog.close()
         self.classement_pays_dialog = AppClassementPays(self.data)
         self.classement_pays_dialog.show()
+        self.changedValue.connect(self.classement_pays_dialog.refreshResult)
 
     def open_Update_Resultats_Equipes(self):
         if self.Update_Resultats_Equipes_dialog is not None:
             self.Update_Resultats_Equipes_dialog.close()
-        self.Update_Resultats_Equipes_dialog = AppUpdateResultatsEquipes(self.data)
+        self.Update_Resultats_Equipes_dialog = AppUpdateResultatsEquipes(self.data, self.changedValue)
         self.Update_Resultats_Equipes_dialog.show()
+        self.changedValue.connect(self.Update_Resultats_Equipes_dialog.refreshEpreuvesList)
 
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
