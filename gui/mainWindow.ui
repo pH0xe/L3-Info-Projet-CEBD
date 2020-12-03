@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>811</width>
-    <height>892</height>
+    <width>713</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -879,8 +879,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>811</width>
-     <height>21</height>
+     <width>713</width>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFiles">
@@ -971,8 +971,8 @@
    <slot>openData()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>446</x>
-     <y>129</y>
+     <x>474</x>
+     <y>144</y>
     </hint>
     <hint type="destinationlabel">
      <x>500</x>
@@ -987,8 +987,8 @@
    <slot>open_fct_fournie_1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>492</x>
-     <y>229</y>
+     <x>532</x>
+     <y>244</y>
     </hint>
     <hint type="destinationlabel">
      <x>561</x>
@@ -1003,8 +1003,8 @@
    <slot>open_fct_fournie_2()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>492</x>
-     <y>269</y>
+     <x>533</x>
+     <y>284</y>
     </hint>
     <hint type="destinationlabel">
      <x>563</x>
@@ -1019,8 +1019,8 @@
    <slot>open_fct_comp_1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>514</x>
-     <y>353</y>
+     <x>559</x>
+     <y>368</y>
     </hint>
     <hint type="destinationlabel">
      <x>579</x>
@@ -1035,8 +1035,8 @@
    <slot>open_fct_comp_2()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>554</x>
-     <y>538</y>
+     <x>578</x>
+     <y>520</y>
     </hint>
     <hint type="destinationlabel">
      <x>593</x>
@@ -1051,8 +1051,8 @@
    <slot>open_fct_comp_3()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>551</x>
-     <y>579</y>
+     <x>583</x>
+     <y>561</y>
     </hint>
     <hint type="destinationlabel">
      <x>592</x>
@@ -1067,8 +1067,8 @@
    <slot>open_fct_comp_4()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>464</x>
-     <y>619</y>
+     <x>495</x>
+     <y>601</y>
     </hint>
     <hint type="destinationlabel">
      <x>564</x>
@@ -1099,8 +1099,8 @@
    <slot>open_classement_pays()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>602</x>
-     <y>739</y>
+     <x>543</x>
+     <y>740</y>
     </hint>
     <hint type="destinationlabel">
      <x>448</x>
@@ -1124,6 +1124,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_13</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_inscription_epreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>429</x>
+     <y>806</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>499</x>
+     <y>802</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>createDB()</slot>
@@ -1141,5 +1157,6 @@
   <slot>open_age_or_equipe()</slot>
   <slot>open_classement_pays()</slot>
   <slot>open_Update_Resultats_Equipes()</slot>
+  <slot>open_inscription_epreuve()</slot>
  </slots>
 </ui>

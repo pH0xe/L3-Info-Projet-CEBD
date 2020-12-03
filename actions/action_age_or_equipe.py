@@ -23,6 +23,7 @@ class AppOrEquipe(QDialog):
                 SELECT gold, numEp 
                 FROM LesResultats JOIN LesEpreuves USING (numep) 
                 WHERE formeEp='par equipe'
+                    OR formeEp='par couple'
             ) 
             SELECT DISTINCT numEq, AVG(ageSp) AS AgeMoyen 
             FROM goldEquipe G JOIN LesEquipiers E ON (G.gold = E.numEq) JOIN LesSportifs USING (numSp) 

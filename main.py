@@ -15,6 +15,7 @@ from actions.action_fct_comp_3 import AppFctComp3
 from actions.action_fct_comp_4 import AppFctComp4
 from actions.action_age_or_equipe import AppOrEquipe
 from actions.action_classement_pays import AppClassementPays
+from actions.action_inscription_epreuve import AppInscriptionEpreuve
 from actions.action_update_resultats_equipes import AppUpdateResultatsEquipes
 
 
@@ -38,6 +39,7 @@ class AppWindow(QMainWindow):
     age_or_equipe_dialog = None
     classement_pays_dialog = None
     Update_Resultats_Equipes_dialog = None
+    insciption_epreuve_dialog = None
 
     # Constructeur
     def __init__(self):
@@ -87,6 +89,25 @@ class AppWindow(QMainWindow):
         else:
             # Si tout s'est bien passé, on affiche le message de succès et on commit
             display.refreshLabel(self.ui.label_2, "Un jeu de test a été inséré dans la base avec succès.")
+            self.data.commit()
+            # On émet le signal indiquant la modification de la table
+            self.changedValue.emit()
+            self.createTrigger()
+
+    def createTrigger(self):
+        try:
+            # On exécute les requêtes du fichier d'insertion
+            db.updateTriggerfile(self.data, "data/createTrigger.sql")
+
+        except Exception as e:
+            # En cas d'erreur, on affiche un message
+            print(e)
+            display.refreshLabel(self.ui.label_2,
+                                 "L'erreur suivante s'est produite lors de la creation des triggers : " + repr(e) + ".")
+
+        else:
+            # Si tout s'est bien passé, on affiche le message de succès et on commit
+            display.refreshLabel(self.ui.label_2, "Trigger créé avec succès.")
             self.data.commit()
             # On émet le signal indiquant la modification de la table
             self.changedValue.emit()
@@ -179,7 +200,6 @@ class AppWindow(QMainWindow):
         self.age_or_equipe_dialog.show()
         self.changedValue.connect(self.age_or_equipe_dialog.refreshResult)
 
-
     # En cas de clic sur la fonction 2.2
     def open_classement_pays(self):
         if self.classement_pays_dialog is not None:
@@ -187,6 +207,12 @@ class AppWindow(QMainWindow):
         self.classement_pays_dialog = AppClassementPays(self.data)
         self.classement_pays_dialog.show()
         self.changedValue.connect(self.classement_pays_dialog.refreshResult)
+
+    def open_inscription_epreuve(self):
+        if self.insciption_epreuve_dialog is not None:
+            self.insciption_epreuve_dialog.close()
+        self.insciption_epreuve_dialog = AppInscriptionEpreuve(self.data, self.changedValue)
+        self.insciption_epreuve_dialog.show()
 
     def open_Update_Resultats_Equipes(self):
         if self.Update_Resultats_Equipes_dialog is not None:
@@ -226,6 +252,9 @@ class AppWindow(QMainWindow):
             self.classement_pays_dialog.close()
         if self.Update_Resultats_Equipes_dialog is not None:
             self.Update_Resultats_Equipes_dialog.close()
+        if self.insciption_epreuve_dialog is not None:
+            self.insciption_epreuve_dialog.close()
+
         # On ferme proprement la base de données
         self.data.close()
 

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>inscription_epreuve</class>
+ <widget class="QDialog" name="inscription_epreuve">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>731</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Inscription à une épreuve</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_nom_ep_ins_ep">
+           <property name="text">
+            <string>Nom de l'épreuve :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combox_nom_ep_ins_ep"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label_form_ins_ep">
+           <property name="text">
+            <string>Forme de l'épreuve</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combox_forme_ins_ep"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_cat_ep_ins_ep">
+           <property name="text">
+            <string>Catégorie de l'épreuve</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combox_cat_ep_ins_ep"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_date_ep_ins_ep">
+           <property name="text">
+            <string>Date de l'épreuve</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combox_date_ep_ins_ep"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_num_ep_ins_ep">
+           <property name="text">
+            <string>Numéro de l'épreuve</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combox_num_ep_ins_ep"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="table_sp_ins_ep">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="showGrid">
+        <bool>false</bool>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_inscription_epreuve">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="validate_ins_ep">
+       <property name="text">
+        <string>Inscrire</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QRadioButton" name="radio_inscription">
+       <property name="text">
+        <string>Inscription</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radio_deinscription">
+       <property name="text">
+        <string>Désinscription</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0">
+    <widget class="QListWidget" name="logList">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Log</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>combox_nom_ep_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshFormeEpreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>185</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combox_forme_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshCategorieEpreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1014</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>562</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combox_cat_ep_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshDateEpreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>43</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>91</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combox_date_ep_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshNumEpreuve()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>676</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combox_num_ep_ins_ep</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>refreshResult()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1014</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>579</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>validate_ins_ep</sender>
+   <signal>clicked()</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>register()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>468</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>124</x>
+     <y>470</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radio_inscription</sender>
+   <signal>clicked()</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>changeObjectif()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>50</x>
+     <y>16</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>166</x>
+     <y>-16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radio_deinscription</sender>
+   <signal>clicked()</signal>
+   <receiver>inscription_epreuve</receiver>
+   <slot>changeObjectif()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>583</x>
+     <y>12</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>779</x>
+     <y>-6</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>refreshResult()</slot>
+  <slot>refreshFormeEpreuve()</slot>
+  <slot>refreshCategorieEpreuve()</slot>
+  <slot>refreshDateEpreuve()</slot>
+  <slot>refreshNumEpreuve()</slot>
+  <slot>register()</slot>
+  <slot>changeObjectif()</slot>
+ </slots>
+</ui>
