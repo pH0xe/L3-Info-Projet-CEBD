@@ -168,7 +168,6 @@ class AppWindow(QMainWindow):
         self.fct_comp_4_dialog.show()
         self.changedValue.connect(self.fct_comp_4_dialog.refreshCatList)
 
-
     # En cas de clic sur la fonction 2.1
     def open_age_or_equipe(self):
         if self.age_or_equipe_dialog is not None:
@@ -188,7 +187,6 @@ class AppWindow(QMainWindow):
             self.Update_Resultats_Equipes_dialog.close()
         self.Update_Resultats_Equipes_dialog = AppUpdateResultatsEquipes(self.data)
         self.Update_Resultats_Equipes_dialog.show()
-
 
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
