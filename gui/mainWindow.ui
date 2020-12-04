@@ -40,7 +40,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-32</y>
          <width>681</width>
          <height>959</height>
         </rect>
@@ -898,8 +898,8 @@
    <slot>createDB()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>156</x>
-     <y>85</y>
+     <x>131</x>
+     <y>77</y>
     </hint>
     <hint type="destinationlabel">
      <x>69</x>
@@ -914,8 +914,8 @@
    <slot>insertDB()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>85</y>
+     <x>326</x>
+     <y>77</y>
     </hint>
     <hint type="destinationlabel">
      <x>343</x>
@@ -930,8 +930,8 @@
    <slot>deleteDB()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>412</x>
-     <y>144</y>
+     <x>650</x>
+     <y>77</y>
     </hint>
     <hint type="destinationlabel">
      <x>417</x>
@@ -946,8 +946,8 @@
    <slot>openData()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>476</x>
-     <y>185</y>
+     <x>466</x>
+     <y>127</y>
     </hint>
     <hint type="destinationlabel">
      <x>483</x>
@@ -962,8 +962,8 @@
    <slot>open_fct_fournie_1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>534</x>
-     <y>283</y>
+     <x>524</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>561</x>
@@ -978,8 +978,8 @@
    <slot>open_fct_fournie_2()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>535</x>
-     <y>324</y>
+     <x>525</x>
+     <y>268</y>
     </hint>
     <hint type="destinationlabel">
      <x>563</x>
@@ -994,8 +994,8 @@
    <slot>open_fct_comp_1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>559</x>
-     <y>368</y>
+     <x>551</x>
+     <y>343</y>
     </hint>
     <hint type="destinationlabel">
      <x>579</x>
@@ -1010,8 +1010,8 @@
    <slot>open_fct_comp_2()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>578</x>
-     <y>520</y>
+     <x>599</x>
+     <y>529</y>
     </hint>
     <hint type="destinationlabel">
      <x>593</x>
@@ -1026,8 +1026,8 @@
    <slot>open_fct_comp_3()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>583</x>
-     <y>561</y>
+     <x>594</x>
+     <y>571</y>
     </hint>
     <hint type="destinationlabel">
      <x>592</x>
@@ -1042,8 +1042,8 @@
    <slot>open_fct_comp_4()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>495</x>
-     <y>601</y>
+     <x>487</x>
+     <y>613</y>
     </hint>
     <hint type="destinationlabel">
      <x>564</x>
@@ -1059,7 +1059,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>220</x>
-     <y>696</y>
+     <y>664</y>
     </hint>
     <hint type="destinationlabel">
      <x>569</x>
@@ -1075,7 +1075,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>543</x>
-     <y>740</y>
+     <y>708</y>
     </hint>
     <hint type="destinationlabel">
      <x>448</x>
@@ -1090,8 +1090,8 @@
    <slot>open_Update_Resultats_Equipes()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>380</x>
-     <y>833</y>
+     <x>463</x>
+     <y>847</y>
     </hint>
     <hint type="destinationlabel">
      <x>518</x>
@@ -1107,7 +1107,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>429</x>
-     <y>806</y>
+     <y>774</y>
     </hint>
     <hint type="destinationlabel">
      <x>499</x>
@@ -1122,12 +1122,28 @@
    <slot>createTrigger()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>564</x>
-     <y>90</y>
+     <x>502</x>
+     <y>77</y>
     </hint>
     <hint type="destinationlabel">
      <x>575</x>
      <y>88</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_17</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_inscription_sportif()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>375</x>
+     <y>910</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>453</x>
+     <y>937</y>
     </hint>
    </hints>
   </connection>
@@ -1150,5 +1166,6 @@
   <slot>open_Update_Resultats_Equipes()</slot>
   <slot>open_inscription_epreuve()</slot>
   <slot>createTrigger()</slot>
+  <slot>open_inscription_sportif()</slot>
  </slots>
 </ui>
