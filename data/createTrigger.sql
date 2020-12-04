@@ -22,17 +22,6 @@ BEGIN
 END;
 /
 
--- Verifie que l'epreuve concerve bien 3 sportifs en cas de delete
-CREATE TRIGGER IF NOT EXISTS au_moins_3_inscrits_delete
-    BEFORE DELETE ON LesInscriptions
-BEGIN
-    SELECT CASE
-        WHEN ((SELECT nombreInscrit FROM LesEpreuvesView WHERE numEp = OLD.numEp) < 4)
-        THEN RAISE(ABORT, 'Moins de 3 inscrit en cas de suppression. Supprimer l''épreuve ou inscrivez d''autre personnes.')
-    end;
-END;
-/
-
 -- Verifier que l'on de l'inscription a une équipe le sportif fait bien partie du bon pays
 CREATE TRIGGER IF NOT EXISTS bon_pays_equipe
     BEFORE INSERT ON LesEquipiers
@@ -62,17 +51,6 @@ BEGIN
     SELECT CASE
         WHEN (NEW.numEq > 100 OR NEW.numEq < 1)
         THEN RAISE(ABORT, 'Numéros d''équipe invalide. Doit être entre 1 et 100.')
-    END;
-END;
-/
-
--- au moins 2 sportif dans l'equipe si delete
-CREATE TRIGGER IF NOT EXISTS au_moins_2_equipier
-    BEFORE DELETE ON LesEquipiers
-BEGIN
-    SELECT CASE
-        WHEN ((SELECT nbEquipiersEq FROM LesEquipes WHERE LesEquipes.numEq = OLD.numEq) < 3)
-        THEN RAISE(ABORT, 'Moins de 2 équipier en cas de suppression. Supprimer l''équipe ou inscrivez d''autre personnes.')
     END;
 END;
 /

@@ -40,7 +40,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-32</y>
+         <y>0</y>
          <width>681</width>
          <height>959</height>
         </rect>
@@ -1147,6 +1147,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_16</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_gestion_equipe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>953</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>262</x>
+     <y>952</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>createDB()</slot>
@@ -1167,5 +1183,6 @@
   <slot>open_inscription_epreuve()</slot>
   <slot>createTrigger()</slot>
   <slot>open_inscription_sportif()</slot>
+  <slot>open_gestion_equipe()</slot>
  </slots>
 </ui>
