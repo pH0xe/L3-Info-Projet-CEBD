@@ -17,6 +17,7 @@ from actions.action_age_or_equipe import AppOrEquipe
 from actions.action_classement_pays import AppClassementPays
 from actions.action_inscription_epreuve import AppInscriptionEpreuve
 from actions.action_update_resultats_equipes import AppUpdateResultatsEquipes
+from actions.action_inscription_sportif import AppInscriptionSportif
 
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
@@ -40,6 +41,7 @@ class AppWindow(QMainWindow):
     classement_pays_dialog = None
     Update_Resultats_Equipes_dialog = None
     insciption_epreuve_dialog = None
+    insciption_sportif_dialog = None
 
     # Constructeur
     def __init__(self):
@@ -220,6 +222,13 @@ class AppWindow(QMainWindow):
         self.Update_Resultats_Equipes_dialog.show()
         self.changedValue.connect(self.Update_Resultats_Equipes_dialog.refreshEpreuvesList)
 
+    def open_inscription_sportif(self):
+        if self.insciption_sportif_dialog is not None:
+            self.insciption_sportif_dialog.close()
+        self.insciption_sportif_dialog = AppInscriptionSportif(self.data, self.changedValue)
+        self.insciption_sportif_dialog.show()
+        self.changedValue.connect(self.insciption_sportif_dialog.setGoodLayout)
+
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
     ####################################################################################################################
@@ -253,6 +262,8 @@ class AppWindow(QMainWindow):
             self.Update_Resultats_Equipes_dialog.close()
         if self.insciption_epreuve_dialog is not None:
             self.insciption_epreuve_dialog.close()
+        if self.insciption_sportif_dialog is not None:
+            self.insciption_sportif_dialog.close()
 
         # On ferme proprement la base de données
         self.data.close()
