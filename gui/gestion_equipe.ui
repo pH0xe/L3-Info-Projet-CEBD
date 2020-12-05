@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>gestion_equipe_dialog</class>
+ <widget class="QDialog" name="gestion_equipe_dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>823</width>
+    <height>449</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion des équipes</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tab_create">
+      <attribute name="title">
+       <string>Création d'équipe</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_create_num">
+         <property name="text">
+          <string>Numéros de l'équipe</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spin_create_num">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Premier sportif</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cb_premier_sp"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Second sportif</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cb_second_sp"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Pour ajouter d'autre sportif créé l'équipe ici puis aller sur la page &quot;Modification&quot;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_create">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_create">
+         <property name="text">
+          <string>Valider la création</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_update">
+      <attribute name="title">
+       <string>Modification d'équipe</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Equipe :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_update_add_eq"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Sportif:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_update_add_sp"/>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_update_add">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_update_add">
+           <property name="text">
+            <string>Valider l'ajout</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Equipe :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_update_remove_eq"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Sportif :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_update_remove_sp"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Si l'équipe que vous souhaitez modifier n'apparait pas, elle possède surement  2 équipiers et ne peut donc pas subir une suppression d'équipier. Pensez à ajouter un équipier ou à supprimer l'équipe.</string>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_update_remove">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>Supprimer de l'équipe</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_delete">
+      <attribute name="title">
+       <string>Suppression d'équipe</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QTableWidget" name="table_delete">
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>numEq</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>nbEquipiersEq</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>pays</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>nomEquipier</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_delete">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_delete">
+         <property name="text">
+          <string>Valider la suppression</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btn_delete</sender>
+   <signal>clicked()</signal>
+   <receiver>gestion_equipe_dialog</receiver>
+   <slot>deleteEquipe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>446</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_create</sender>
+   <signal>clicked()</signal>
+   <receiver>gestion_equipe_dialog</receiver>
+   <slot>createEquipe()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>329</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>42</x>
+     <y>445</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_update_add</sender>
+   <signal>clicked()</signal>
+   <receiver>gestion_equipe_dialog</receiver>
+   <slot>updateEquipeAdd()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>421</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>46</x>
+     <y>504</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>gestion_equipe_dialog</receiver>
+   <slot>updateEquipeRemove()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>539</x>
+     <y>423</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>514</x>
+     <y>502</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combo_update_add_eq</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>gestion_equipe_dialog</receiver>
+   <slot>updateSportifList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>83</x>
+     <y>-15</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>combo_update_remove_eq</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>gestion_equipe_dialog</receiver>
+   <slot>updateSportifList()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>483</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>512</x>
+     <y>-11</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_premier_sp</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>gestion_equipe_dialog</receiver>
+   <slot>updateSp2List()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-26</x>
+     <y>278</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>refreshResult()</slot>
+  <slot>refreshEquipesList()</slot>
+  <slot>refresh2emeplaceList()</slot>
+  <slot>refresh3emeplaceList()</slot>
+  <slot>refreshEpreuvesList()</slot>
+  <slot>setGoodLayout()</slot>
+  <slot>setLabelRecap()</slot>
+  <slot>validate()</slot>
+  <slot>deleteEquipe()</slot>
+  <slot>updateEquipeRemove()</slot>
+  <slot>createEquipe()</slot>
+  <slot>updateEquipeAdd()</slot>
+  <slot>updateSportifList()</slot>
+  <slot>updateSp2List()</slot>
+ </slots>
+</ui>
